@@ -131,11 +131,13 @@ library LinkableRing {
     /*
      * Initialise the Ring.Data structure with a token and denomination
     **/
-    function initialize(Data storage self, bytes32 guid) internal returns (bool) {
+    function initialize(Data storage self, bytes32 guid, uint256 ringSize) internal returns (bool) {
         require(uint256(guid) != 0);
         require(self.hash.X == 0);
 
         self.hash.X = uint256(guid);
+
+        self.ringSize = ringSize;
 
         return true;
     }
