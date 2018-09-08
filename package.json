@@ -1,8 +1,8 @@
 {
-  "name": "mobius-truffle",
+  "name": "mobius-truffle-mixbytes",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/clearmatics/mobius.git",
+  "repository": "https://github.com/mixbytes/mobius.git",
   "author": "opensource@clearmatics.com",
   "license": "LGPL-3.0+",
   "dependencies": {

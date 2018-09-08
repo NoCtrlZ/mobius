@@ -76,12 +76,12 @@ import {bn256g1 as Curve} from './bn256g1.sol';
 
 library LinkableRing {
     using Curve for Curve.Point;
-    uint256 public constant RING_SIZE = 4;
 
     struct Data {
         Curve.Point hash;
         Curve.Point[] pubkeys;
         uint256[] tags;
+        uint256 ringSize;
     }
 
     /*
@@ -97,7 +97,7 @@ library LinkableRing {
      * If the ring has not been initialized it is considered Dead.
     **/
     function isDead(Data storage self) internal view returns (bool) {
-        return self.hash.X == 0 || (self.tags.length >= RING_SIZE && self.pubkeys.length >= RING_SIZE);
+        return self.hash.X == 0 || (self.tags.length >= self.ringSize && self.pubkeys.length >= self.ringSize);
     }
 
     /*
@@ -144,7 +144,7 @@ library LinkableRing {
      * Maximum number of participants reached
     **/
     function isFull(Data storage self) internal view returns (bool) {
-        return self.pubkeys.length == RING_SIZE;
+        return self.pubkeys.length == self.ringSize;
     }
 
     /*
